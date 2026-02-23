@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Keel</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #020308;
+      --fg: rgba(255,255,255,.90);
+      --muted: rgba(255,255,255,.64);
+      --hair: rgba(255,255,255,.12);
+      --accent: #6bffda;
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--fg);
+      background: var(--bg);
+      overflow: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: -20%;
+      z-index: 0;
+      background:
+        radial-gradient(900px 600px at 50% -10%, rgba(255,255,255,.12), transparent 65%),
+        radial-gradient(700px 520px at 0% 120%, rgba(107,255,218,.18), transparent 60%),
+        radial-gradient(700px 520px at 100% 120%, rgba(90,130,255,.18), transparent 60%);
+      opacity: 1;
+      filter: blur(0px);
+      transform: translate3d(0,0,0);
+      animation: bgDrift 40s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    .frame {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 24px 28px;
+    }
+
+    .center {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      place-items: center;
+      width: min(220px, 46vw);
+      aspect-ratio: 1 / 1;
+      perspective: 1200px;
+    }
+
+    .logo-wrap {
+      width: 68%;
+      height: 68%;
+      display: grid;
+      place-items: center;
+      transform-style: preserve-3d;
+      transform-origin: center;
+      animation: keelCarousel 14s ease-in-out infinite alternate;
+      will-change: transform;
+    }
+
+    .keel-logo {
+      width: 100%;
+      height: 100%;
+      opacity: .8;
+      transform: translateZ(26px);
+      mix-blend-mode: screen;
+      -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 0, #000 70%, transparent 100%);
+      mask-image: radial-gradient(circle at 50% 50%, #000 0, #000 70%, transparent 100%);
+    }
+
+    .corner, .bottom {
+      position: absolute;
+      z-index: 2;
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: none;
+      color: rgba(255,255,255,.56);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .top-center {
+      top: 26px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-transform: uppercase;
+      letter-spacing: .18em;
+    }
+
+    .bottom-left {
+      left: 32px;
+      bottom: 28px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      letter-spacing: .16em;
+      font-size: 12px;
+    }
+
+    .bottom-left-main {
+      font-size: 11px;
+    }
+
+    .bottom-left-sub {
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: none;
+      color: rgba(255,255,255,.48);
+    }
+
+    .bottom-right {
+      right: 32px;
+      bottom: 28px;
+      font-size: 12px;
+    }
+
+    .bottom-right a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .bottom-right a:hover {
+      text-decoration: underline;
+    }
+
+    .dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.92);
+      box-shadow:
+        0 0 12px rgba(255,255,255,.42),
+        0 0 28px rgba(255,255,255,.18);
+    }
+
+    @keyframes bgDrift {
+      0% {
+        transform: translate3d(-4%, -2%, 0) scale(1.02);
+      }
+      50% {
+        transform: translate3d(4%, 3%, 0) scale(1.05);
+      }
+      100% {
+        transform: translate3d(-3%, 4%, 0) scale(1.02);
+      }
+    }
+
+    @keyframes keelCarousel {
+      0% {
+        transform: rotateX(10deg) rotateY(-12deg);
+      }
+      50% {
+        transform: rotateX(10deg) rotateY(12deg);
+      }
+      100% {
+        transform: rotateX(10deg) rotateY(-12deg);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .top-center { top: 22px; font-size: 11px; }
+
+      .bottom-left,
+      .bottom-right {
+        bottom: 20px;
+        font-size: 11px;
+      }
+
+      .bottom-left-main {
+        font-size: 11px;
+      }
+
+      .bottom-left-sub {
+        font-size: 10px;
+      }
+
+      .center {
+        width: min(160px, 60vw);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .logo-wrap {
+        animation: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="frame">
+    <div class="corner top-center">
+      <span class="dot"></span>
+      <span>Cohort 3.0 Coming Soon</span>
+    </div>
+
+    <div class="corner bottom-left">
+      <span class="bottom-left-main">Keel</span>
+      <span class="bottom-left-sub">the nyc accelerator</span>
+    </div>
+
+    <div class="corner bottom-right">
+      <a href="mailto:brent@keel.club">brent@keel.club</a>
+    </div>
+
+    <div class="center" aria-hidden="true">
+      <div class="logo-wrap">
+        <img
+          class="keel-logo"
+          src="/Users/brentsmith1024/Downloads/keel..svg"
+          alt="Keel"
+        />
+      </div>
+    </div>
+  </div>
+</body>
+</html>
