@@ -136,12 +136,28 @@
       font-size: 12px;
     }
 
-    .bottom-right a {
-      color: inherit;
+    .bottom-right-stack {
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+      white-space: normal;
+      text-align: right;
+    }
+
+    .bottom-right-stack a {
       text-decoration: none;
     }
 
-    .bottom-right a:hover {
+    /* Match .corner / “Keel” line (anchors don’t inherit color like spans) */
+    .bottom-right-stack a.bottom-left-main {
+      color: rgba(255, 255, 255, .56);
+    }
+
+    .bottom-right-stack a.bottom-left-sub {
+      color: rgba(255, 255, 255, .48);
+    }
+
+    .bottom-right-stack a:hover {
       text-decoration: underline;
     }
 
@@ -221,8 +237,9 @@
       <span class="bottom-left-sub">the nyc accelerator</span>
     </div>
 
-    <div class="corner bottom-right">
-      <a href="mailto:brent@keel.club">brent@keel.club</a>
+    <div class="corner bottom-right bottom-right-stack">
+      <a class="bottom-left-main" href="https://keel.club/cohort">Apply to Cohort 3.0</a>
+      <a class="bottom-left-sub" href="mailto:brent@keel.club">brent@keel.club</a>
     </div>
 
     <div class="center" aria-hidden="true">
