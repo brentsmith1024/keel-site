@@ -107,6 +107,21 @@
       perspective: 1200px;
     }
 
+    .keel-logo-link {
+      display: grid;
+      place-items: center;
+      width: 100%;
+      height: 100%;
+      text-decoration: none;
+      color: inherit;
+      border-radius: 4px;
+    }
+
+    .keel-logo-link:focus-visible {
+      outline: 1px solid rgba(255, 255, 255, .4);
+      outline-offset: 6px;
+    }
+
     .logo-wrap {
       width: 68%;
       height: 68%;
@@ -322,14 +337,16 @@
   <!-- Same structure as index.html: .frame centers .center in the viewport -->
   <div class="logo-viewport">
     <div class="frame">
-      <div class="center" aria-hidden="true">
-        <div class="logo-wrap">
-          <img
-            class="keel-logo"
-            src="../keel.svg"
-            alt="Keel"
-          />
-        </div>
+      <div class="center">
+        <a href="https://keel.club" class="keel-logo-link" aria-label="Keel — home">
+          <div class="logo-wrap">
+            <img
+              class="keel-logo"
+              src="../keel.svg"
+              alt=""
+            />
+          </div>
+        </a>
       </div>
     </div>
   </div>
