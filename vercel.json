@@ -2,5 +2,8 @@
   "redirects": [
     { "source": "/cohort-3", "destination": "/cohort", "permanent": true },
     { "source": "/cohort-3.html", "destination": "/cohort", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/cohort4", "destination": "/cohort" }
   ]
 }
